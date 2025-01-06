@@ -22,36 +22,22 @@ namespace iCAPS
 
         List<Button> menu_button_list = new List<Button>();
 
-        bool is_design_mode;
-
         public Form1()
         {
             InitializeComponent();
-
+            
             SizeChanged += Form1_SizeChanged;
             Load += Form1_Load;
         }
 
-        private void InitializeCef()
-        {
-            // 初始化 CefSharp
-            CefSharp.WinForms.CefSettings settings = new CefSharp.WinForms.CefSettings();
-            CefSharp.Cef.Initialize(settings);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            is_design_mode = this.Site != null && this.Site.DesignMode;
-
-            if (is_design_mode) return;
+            if (this.Site?.DesignMode ?? false) return;
             
-            InitializeCef();        // 需要在 WindowState 前設定，否則螢幕尺寸會受影響
-
-            WindowState = FormWindowState.Maximized;        // 全螢幕
+            WindowState = FormWindowState.Maximized;    // 全螢幕
 
             menu_add_setting();     // 加入 menu 的 setting 設定
-            LoadFormsFromFolder();      // 讀取資料夾建立 menu
+            LoadFormsFromFolder();  // 讀取資料夾建立 menu
         }
 
         private void menu_add_setting()
@@ -79,11 +65,6 @@ namespace iCAPS
         {
             // string base_directory = AppDomain.CurrentDomain.BaseDirectory;   // 取得目前執行檔所在的目錄
             string base_directory = Environment.CurrentDirectory;   // 取得目前執行檔所在的目錄
-
-            if (is_design_mode)
-            {
-                return;
-            }
 
             string root_path = Directory.GetParent(base_directory)?.Parent?.FullName;  // 回到專案根目錄 (向上一層)
             string forms_path = Path.Combine(root_path, "Forms");

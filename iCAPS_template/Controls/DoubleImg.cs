@@ -7,9 +7,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace ART_plus
+namespace iCAPS
 {
-    class DoubleImg : PictureBox 
+    public class DoubleImg : PictureBox 
     {
         [Description("欲存放於 PictureBox 預備區的影像。"), Category("自訂值")]
         public Image SubImg { get; set; } = null;

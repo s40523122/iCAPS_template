@@ -12,19 +12,21 @@ namespace iCAPS
 {
     public class WebView
     {
+        private static CefSettings settings;
         private ChromiumWebBrowser browser;
-        public void InitializeBrowser(string url = "https://www.google.com/")
+        public WebView(string url = "https://www.google.com/")
         {
+            InitializeCef();
             browser = new ChromiumWebBrowser(url);
             browser.Show();
         }
 
         public void Embed(Control ctrl = null)
         {
-            // 若未指定控制項，開啟新表單以顯示網頁
+            // 若未指定嵌入控制項，開啟彈出式表單以顯示內容
             if (ctrl != null)
             {
-                 ctrl.Controls.Add(browser); 
+                ctrl.Controls.Add(browser); 
             }
             else
             {
@@ -34,10 +36,17 @@ namespace iCAPS
             }
         }
 
+        private void InitializeCef()
+        {
+            // 初始化 CefSharp
+            if (settings != null) return;
+            settings = new CefSettings();
+            Cef.Initialize(settings);
+        }
+
         public static void main(Control ctrl = null)
         {
-            WebView webView = new WebView();        // 建立實例
-            webView.InitializeBrowser();        // 初始化網址 ( 預設為google首頁 )
+            WebView webView = new WebView();        // 建立實例，初始化網址 ( 預設為google首頁 )
             webView.Embed(ctrl);        // 嵌入控制項中
         }
 

@@ -13,10 +13,10 @@ namespace iCAPS
     {
         public static string baseUrl = "";
 
-        public HttpRequest(string Url) 
-        {
-            baseUrl = Url;
-        }
+        //public HttpRequest(string Url) 
+        //{
+        //    baseUrl = Url;
+        //}
 
         /// <summary>
         /// 發起 POST 請求到指定路由
@@ -35,9 +35,19 @@ namespace iCAPS
         /// if(int.TryParse(responseBody, out int number))
         /// </code>
         /// </remarks>
-        public async Task<String> PostRequest(string route, object dataMsg, bool useBaseUrl = true)
+        public static async Task<String> PostRequest(string route, object dataMsg, bool useBaseUrl = true)
         {
-            string RequestUrl = useBaseUrl ? baseUrl + route : route;      // 請求網址
+            string RequestUrl = route;      // 請求網址
+
+            if (useBaseUrl)
+            {
+                if (baseUrl == "")
+                {
+                    MsgBox.Show("尚未指定 HttpRequest.baseUrl !");
+                    return "尚未指定 HttpRequest.baseUrl !";
+                }
+                RequestUrl = baseUrl + route;
+            }
 
             // 製作請求內容
             string innerJson = JsonConvert.SerializeObject(dataMsg);
@@ -96,9 +106,19 @@ namespace iCAPS
         /// if(int.TryParse(responseBody, out int number))
         /// </code>
         /// </remarks>
-        public async Task<String> GetResponse(string route, bool useBaseUrl = true)
+        public static async Task<String> GetResponse(string route, bool useBaseUrl = true)
         {
-            string RequestUrl = useBaseUrl ? baseUrl + route : route;      // 請求網址
+            string RequestUrl = route;      // 請求網址
+
+            if (useBaseUrl)
+            {
+                if (baseUrl == "")
+                {
+                    MsgBox.Show("尚未指定 HttpRequest.baseUrl !");
+                    return "尚未指定 HttpRequest.baseUrl !";
+                }
+                RequestUrl = baseUrl + route;
+            }
 
             // 建立 HttpClient 實例
             using (var httpClient = new HttpClient())

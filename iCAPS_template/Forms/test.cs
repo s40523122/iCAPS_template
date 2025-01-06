@@ -15,6 +15,9 @@ namespace iCAPS.Forms
         public test()
         {
             InitializeComponent();
+
+            WebView webView = new WebView();        // 建立實例，初始化網址 ( 預設為google首頁 )
+            webView.Embed(this);        // 嵌入控制項中
         }
     }
 }
