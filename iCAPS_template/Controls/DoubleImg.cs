@@ -42,7 +42,28 @@ namespace iCAPS
                 Squaring();
             }
         }
-        
+
+        private bool enableCilck = true;
+
+        [Description("是否啟用點擊事件。"), Category("自訂值")]
+        public bool EnableCilck
+        {
+            get { return enableCilck; }
+            set
+            {
+                enableCilck = value;
+
+                if(value)
+                {
+                    Click += DoubleImg_Click;
+                }
+                else
+                {
+                    Click -= DoubleImg_Click;
+                }
+            }
+        }
+
         public DoubleImg()
         {
             SizeChanged += DoubleImg_SizeChanged;

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace iCAPS
 {
-    internal class Env
+    public class Env
     {
         /// <summary>
         /// 專案 Debug 路徑
