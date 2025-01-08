@@ -55,7 +55,7 @@ namespace iCAPS
 
                 if(value)
                 {
-                    Click += DoubleImg_Click;
+                    if (!isClickEventBound) Click += DoubleImg_Click;
                 }
                 else
                 {
@@ -64,10 +64,13 @@ namespace iCAPS
             }
         }
 
+        bool isClickEventBound = false;     // 判定事件是否已訂閱
+
         public DoubleImg()
         {
             SizeChanged += DoubleImg_SizeChanged;
             Click += DoubleImg_Click;
+            isClickEventBound = true;
         }
 
         private void DoubleImg_Click(object sender, EventArgs e)
