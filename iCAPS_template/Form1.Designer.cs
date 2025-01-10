@@ -30,11 +30,11 @@ namespace iCAPS
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.slidePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.slidePanel = new System.Windows.Forms.Panel();
             this.info = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,9 +65,9 @@ namespace iCAPS
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.sidePanel.Controls.Add(this.slidePanel);
             this.sidePanel.Controls.Add(this.tableLayoutPanel2);
             this.sidePanel.Controls.Add(this.tableLayoutPanel1);
-            this.sidePanel.Controls.Add(this.slidePanel);
             this.sidePanel.Controls.Add(this.info);
             this.sidePanel.Controls.Add(this.panel4);
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -75,6 +75,15 @@ namespace iCAPS
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(266, 720);
             this.sidePanel.TabIndex = 0;
+            // 
+            // slidePanel
+            // 
+            this.slidePanel.BackColor = System.Drawing.Color.DarkOrange;
+            this.slidePanel.Location = new System.Drawing.Point(4, 39);
+            this.slidePanel.Name = "slidePanel";
+            this.slidePanel.Size = new System.Drawing.Size(8, 81);
+            this.slidePanel.TabIndex = 2;
+            this.slidePanel.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -149,15 +158,6 @@ namespace iCAPS
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 464);
             this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // slidePanel
-            // 
-            this.slidePanel.BackColor = System.Drawing.Color.DarkOrange;
-            this.slidePanel.Location = new System.Drawing.Point(2, 25);
-            this.slidePanel.Name = "slidePanel";
-            this.slidePanel.Size = new System.Drawing.Size(8, 81);
-            this.slidePanel.TabIndex = 2;
-            this.slidePanel.Visible = false;
             // 
             // info
             // 
@@ -283,6 +283,7 @@ namespace iCAPS
             this.btnFormControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnFormControl.Change = false;
             this.btnFormControl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFormControl.EnableCilck = true;
             this.btnFormControl.Image = ((System.Drawing.Image)(resources.GetObject("btnFormControl.Image")));
             this.btnFormControl.Location = new System.Drawing.Point(886, 10);
             this.btnFormControl.Name = "btnFormControl";
@@ -310,7 +311,7 @@ namespace iCAPS
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(43, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 34);
+            this.label1.Size = new System.Drawing.Size(195, 27);
             this.label1.TabIndex = 3;
             this.label1.Text = "State Monitor App";
             // 
@@ -341,16 +342,16 @@ namespace iCAPS
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(266, 141);
+            this.panel1.Location = new System.Drawing.Point(266, 131);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(965, 579);
+            this.panel1.Size = new System.Drawing.Size(965, 589);
             this.panel1.TabIndex = 5;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(266, 140);
+            this.panel5.Location = new System.Drawing.Point(266, 130);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(965, 1);
             this.panel5.TabIndex = 44;
@@ -362,7 +363,7 @@ namespace iCAPS
             this.connStatusLabel.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.connStatusLabel.Location = new System.Drawing.Point(988, 82);
             this.connStatusLabel.Name = "connStatusLabel";
-            this.connStatusLabel.Size = new System.Drawing.Size(231, 34);
+            this.connStatusLabel.Size = new System.Drawing.Size(180, 27);
             this.connStatusLabel.TabIndex = 43;
             this.connStatusLabel.Text = "連線狀態：未連接";
             // 
@@ -376,7 +377,7 @@ namespace iCAPS
             this.moduleTitle.Location = new System.Drawing.Point(266, 46);
             this.moduleTitle.Name = "moduleTitle";
             this.moduleTitle.Padding = new System.Windows.Forms.Padding(20, 22, 20, 22);
-            this.moduleTitle.Size = new System.Drawing.Size(383, 94);
+            this.moduleTitle.Size = new System.Drawing.Size(314, 84);
             this.moduleTitle.TabIndex = 42;
             this.moduleTitle.Text = "設備狀態監控App";
             this.moduleTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
