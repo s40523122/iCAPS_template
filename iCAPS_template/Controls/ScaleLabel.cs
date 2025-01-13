@@ -18,18 +18,27 @@ namespace iCAPS
             set 
             {
                 _factor = value;
-                Font = new Font(Font.FontFamily, Height * _factor, Font.Style);
+                Invalidate();
+                //Font = new Font(Font.FontFamily, Height * _factor, Font.Style);
             }
         }
         private float _factor = 0.5f;
 
         public ScaleLabel()
         {
+            AutoSize = false;
             SizeChanged += ScaleLabel_SizeChanged;
+            Paint += ScaleLabel_Paint;
+        }
+
+        private void ScaleLabel_Paint(object sender, PaintEventArgs e)
+        {
+            Font = new Font(Font.FontFamily, Height * _factor, Font.Style);
         }
 
         private void ScaleLabel_SizeChanged(object sender, EventArgs e)
         {
+            
             Factor = _factor;
         }
     }
