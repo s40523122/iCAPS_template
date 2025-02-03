@@ -49,6 +49,11 @@ namespace iCAPS
                 .FirstOrDefault(t => t.Name.Equals("Setting", StringComparison.OrdinalIgnoreCase)
                                      && t.IsSubclassOf(typeof(Form)));
 
+            if (formType == null)
+            {
+                MessageBox.Show("請確定在專案中已建立Forms/Setting.cs。", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             Form form = Activator.CreateInstance(formType) as Form;
             btnSetting.Click += (sender, e) => menu_x_Click(sender, e, form);
             // 創建一個新的 Bitmap，並使用 Graphics 類別進行縮放
