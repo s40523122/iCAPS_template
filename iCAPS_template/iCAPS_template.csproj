@@ -129,7 +129,13 @@
     <Compile Include="Controls\myPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\ScaleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ScaleLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ScalePadding.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Environment.cs" />
