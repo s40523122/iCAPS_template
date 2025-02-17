@@ -11,33 +11,36 @@ namespace iCAPS
 {
     public class HttpRequest
     {
-        private string baseUrl = "";
+
+        /// <summary>
+        /// 回應字串訊息
+        /// </summary>
+        public string ResponseMessage = "";
+        
+        private string _base_url = "";
 
         public HttpRequest(string Url) 
         {
-            baseUrl = Url;
+            _base_url = Url;
         }
 
         /// <summary>
         /// 發起 POST 請求到指定路由
         /// </summary>
-        /// <param name="route"> 路由地址 </param>
+        /// <param name="route"> 路由地址。如果 useBaseUrl 為 true，須提供完整網址。</param>
         /// <param name="dataMsg"> 欲傳送物件 </param>
-        /// <param name="useBaseUrl">(可選)是否使用baseUrl</param>
+        /// <param name="useBaseUrl">(可選)是否使用baseUrl。</param>
         /// <returns> POST 回應內容字串 </returns>
         /// <remarks>
         /// 使用範例如下：
         /// <code>
-        /// string responseBody = await HTTPJson.PostResponse(route, dataMsg);
-        /// </code>
-        /// 嘗試解析回傳內容是否為 int ，以判定是否得到正確回應。
-        /// <code>
-        /// if(int.TryParse(responseBody, out int number))
+        /// int responseBody = await HTTPJson.PostResponse(route, dataMsg);
+        /// string request_message = HTTPJson.RequestMessage;
         /// </code>
         /// </remarks>
-        public async Task<String> PostRequest(string route, object dataMsg, bool useBaseUrl = true)
+        public async Task<int> PostRequest(string route, object dataMsg, bool useBaseUrl = true)
         {
-            string RequestUrl = useBaseUrl ? baseUrl + route : route;      // 請求網址
+            string RequestUrl = useBaseUrl ? _base_url + route : route;      // 請求網址
 
             // 製作請求內容
             string innerJson = JsonConvert.SerializeObject(dataMsg);
@@ -54,28 +57,22 @@ namespace iCAPS
                 {
                     HttpResponseMessage response = await httpClient.PostAsync(RequestUrl, content);     // 等待回應
 
-                    if (response.IsSuccessStatusCode)
+                    int response_code = (int)response.StatusCode;
+
+                    if (!response.IsSuccessStatusCode)
                     {
-                        //MessageBox.Show("POST 請求成功！");
-                        Console.WriteLine("POST request success！");
-                        
+                        ResponseMessage = $"Error when POST request：{response_code} {response.StatusCode} ({response.Content})";
                     }
                     else
                     {
-                        //MessageBox.Show($"發送 POST 請求時發生錯誤：{response.StatusCode}");
-                        int status = (int)response.StatusCode;
-                        Console.WriteLine($"Error when POST request：{status} {response.StatusCode}");
-                        //return status.ToString();
+                        ResponseMessage = await response.Content.ReadAsStringAsync();       // 回應內容字串
                     }
-                    string responseBody = await response.Content.ReadAsStringAsync();       // 回應內容字串
-                    return responseBody;
+                    return response_code;
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("[Error]");
-                    Debug.WriteLine(ex.Message);
-                    //return "500";
-                    return "無法連接至伺服器。" ;
+                    ResponseMessage = $"無法連接至伺服器 ({ex.Message})。";
+                    return 500;
                 }
             } 
         }
@@ -83,28 +80,23 @@ namespace iCAPS
         /// <summary>
         /// 發起 GET 請求到指定路由
         /// </summary>
-        /// <param name="route">路由地址</param>
-        /// <param name="useBaseUrl">是否使用baseUrl</param>
+        /// <param name="route">路由地址。如果 useBaseUrl 為 true，須提供完整網址。</param>
+        /// <param name="useBaseUrl">(可選)是否使用baseUrl。</param>
         /// <returns>(string) GET 回應內容，若錯誤回傳 HTTP 狀態碼 </returns>
         /// <remarks>
         /// 使用範例如下：
         /// <code>
-        /// string responseBody = await HTTPJson.PostResponse(route, dataMsg);
-        /// </code>
-        /// 嘗試解析回傳內容是否為 int ，以判定是否得到正確回應。
-        /// <code>
-        /// if(int.TryParse(responseBody, out int number))
+        /// int responseBody = await HTTPJson.GetResponse(route);
+        /// string request_message = HTTPJson.RequestMessage;
         /// </code>
         /// </remarks>
-        public async Task<String> GetResponse(string route, bool useBaseUrl = true)
+        public async Task<int> GetResponse(string route, bool useBaseUrl = true)
         {
-            string RequestUrl = useBaseUrl ? baseUrl + route : route;      // 請求網址
+            string RequestUrl = useBaseUrl ? _base_url + route : route;      // 請求網址
 
             // 建立 HttpClient 實例
             using (var httpClient = new HttpClient())
             {
-
-
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 httpClient.Timeout = TimeSpan.FromSeconds(10);          // 10秒超時
@@ -113,26 +105,23 @@ namespace iCAPS
                 {
                     HttpResponseMessage response = await httpClient.GetAsync(RequestUrl);     // 等待回應
 
-                    if (response.IsSuccessStatusCode)
+                    int response_code = (int)response.StatusCode;
+
+                    if (!response.IsSuccessStatusCode)
                     {
-                        //MessageBox.Show("GET 請求成功！");
-                        Console.WriteLine("GET request success！");
+                        ResponseMessage = $"Error when get request：{response_code} {response.StatusCode} ({response.Content})";
                     }
                     else
                     {
-                        int status = (int)response.StatusCode;
-                        //MessageBox.Show($"發送 GET 請求時發生錯誤：{response.StatusCode}");
-                        Console.WriteLine($"Error when get request：{status} {response.StatusCode}");
+                        ResponseMessage = await response.Content.ReadAsStringAsync();       // 回應內容字串
                     }
-                    string responseBody = await response.Content.ReadAsStringAsync();       // 回應內容字串
-                    return responseBody;
+
+                    return response_code;
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("[Error]");
-                    Debug.WriteLine(ex.Message);
-                    //return "500";
-                    return "無法連接至伺服器。" ;
+                    ResponseMessage = $"無法連接至伺服器 ({ex.Message})。";
+                    return 500;
                 }
             }
         }
