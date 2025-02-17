@@ -25,6 +25,11 @@ namespace iCAPS
         public Form1()
         {
             InitializeComponent();
+
+            string[] Version_parts = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.');
+            string icaps_version = string.Join(".", Version_parts.Take(3));
+
+            version_no.Text = $"V{icaps_version}";
             
             SizeChanged += Form1_SizeChanged;
             Load += Form1_Load;

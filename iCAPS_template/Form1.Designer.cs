@@ -38,8 +38,12 @@ namespace iCAPS
             this.info = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.scaleLabel1 = new iCAPS.ScaleLabel();
+            this.version_no = new iCAPS.ScaleLabel();
+            this.scaleLabel3 = new iCAPS.ScaleLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnMini = new System.Windows.Forms.Button();
+            this.btnFormControl = new iCAPS.DoubleImg();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btFold = new System.Windows.Forms.PictureBox();
@@ -48,18 +52,14 @@ namespace iCAPS
             this.panel5 = new System.Windows.Forms.Panel();
             this.connStatusLabel = new System.Windows.Forms.Label();
             this.moduleTitle = new System.Windows.Forms.Label();
-            this.btnFormControl = new iCAPS.DoubleImg();
-            this.scaleLabel1 = new iCAPS.ScaleLabel();
-            this.scaleLabel2 = new iCAPS.ScaleLabel();
-            this.scaleLabel3 = new iCAPS.ScaleLabel();
             this.sidePanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btFold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFold)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel
@@ -189,7 +189,7 @@ namespace iCAPS
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel3.Controls.Add(this.scaleLabel1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.scaleLabel2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.version_no, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.scaleLabel3, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -200,6 +200,51 @@ namespace iCAPS
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 136);
             this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // scaleLabel1
+            // 
+            this.scaleLabel1.AutoSize = true;
+            this.scaleLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.scaleLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleLabel1.Factor = 0.31F;
+            this.scaleLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.scaleLabel1.Font = new System.Drawing.Font("微軟正黑體", 29.45F, System.Drawing.FontStyle.Bold);
+            this.scaleLabel1.ForeColor = System.Drawing.Color.White;
+            this.scaleLabel1.Location = new System.Drawing.Point(0, 0);
+            this.scaleLabel1.Margin = new System.Windows.Forms.Padding(0);
+            this.scaleLabel1.Name = "scaleLabel1";
+            this.scaleLabel1.Size = new System.Drawing.Size(172, 95);
+            this.scaleLabel1.TabIndex = 5;
+            this.scaleLabel1.Text = "iCAPS";
+            this.scaleLabel1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // version_no
+            // 
+            this.version_no.AutoSize = true;
+            this.version_no.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.version_no.Factor = 0.14F;
+            this.version_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.3F);
+            this.version_no.ForeColor = System.Drawing.Color.White;
+            this.version_no.Location = new System.Drawing.Point(175, 0);
+            this.version_no.Name = "version_no";
+            this.version_no.Size = new System.Drawing.Size(88, 95);
+            this.version_no.TabIndex = 6;
+            this.version_no.Text = "V0.0.0";
+            this.version_no.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // scaleLabel3
+            // 
+            this.scaleLabel3.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.scaleLabel3, 2);
+            this.scaleLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleLabel3.Factor = 0.32F;
+            this.scaleLabel3.Font = new System.Drawing.Font("微軟正黑體", 13.12F, System.Drawing.FontStyle.Bold);
+            this.scaleLabel3.ForeColor = System.Drawing.Color.White;
+            this.scaleLabel3.Location = new System.Drawing.Point(3, 95);
+            this.scaleLabel3.Name = "scaleLabel3";
+            this.scaleLabel3.Size = new System.Drawing.Size(260, 41);
+            this.scaleLabel3.TabIndex = 7;
+            this.scaleLabel3.Text = "  智慧電腦輔助生產系統";
             // 
             // panel2
             // 
@@ -231,6 +276,24 @@ namespace iCAPS
             this.btnMini.TabIndex = 7;
             this.btnMini.UseVisualStyleBackColor = true;
             this.btnMini.Click += new System.EventHandler(this.btnMini_Click);
+            // 
+            // btnFormControl
+            // 
+            this.btnFormControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFormControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFormControl.Change = false;
+            this.btnFormControl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFormControl.EnableCilck = true;
+            this.btnFormControl.Image = ((System.Drawing.Image)(resources.GetObject("btnFormControl.Image")));
+            this.btnFormControl.Location = new System.Drawing.Point(886, 10);
+            this.btnFormControl.Name = "btnFormControl";
+            this.btnFormControl.SetSquare = true;
+            this.btnFormControl.Size = new System.Drawing.Size(27, 27);
+            this.btnFormControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFormControl.SubImg = ((System.Drawing.Image)(resources.GetObject("btnFormControl.SubImg")));
+            this.btnFormControl.TabIndex = 5;
+            this.btnFormControl.TabStop = false;
+            this.btnFormControl.Click += new System.EventHandler(this.BtnFormControl_Click);
             // 
             // panel3
             // 
@@ -303,6 +366,7 @@ namespace iCAPS
             this.connStatusLabel.Size = new System.Drawing.Size(231, 34);
             this.connStatusLabel.TabIndex = 43;
             this.connStatusLabel.Text = "連線狀態：未連接";
+            this.connStatusLabel.Visible = false;
             // 
             // moduleTitle
             // 
@@ -318,69 +382,6 @@ namespace iCAPS
             this.moduleTitle.TabIndex = 42;
             this.moduleTitle.Text = "設備狀態監控App";
             this.moduleTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnFormControl
-            // 
-            this.btnFormControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFormControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFormControl.Change = false;
-            this.btnFormControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFormControl.EnableCilck = true;
-            this.btnFormControl.Image = ((System.Drawing.Image)(resources.GetObject("btnFormControl.Image")));
-            this.btnFormControl.Location = new System.Drawing.Point(886, 10);
-            this.btnFormControl.Name = "btnFormControl";
-            this.btnFormControl.SetSquare = true;
-            this.btnFormControl.Size = new System.Drawing.Size(27, 27);
-            this.btnFormControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFormControl.SubImg = ((System.Drawing.Image)(resources.GetObject("btnFormControl.SubImg")));
-            this.btnFormControl.TabIndex = 5;
-            this.btnFormControl.TabStop = false;
-            this.btnFormControl.Click += new System.EventHandler(this.BtnFormControl_Click);
-            // 
-            // scaleLabel1
-            // 
-            this.scaleLabel1.AutoSize = true;
-            this.scaleLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.scaleLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleLabel1.Factor = 0.31F;
-            this.scaleLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.scaleLabel1.Font = new System.Drawing.Font("微軟正黑體", 29.45F, System.Drawing.FontStyle.Bold);
-            this.scaleLabel1.ForeColor = System.Drawing.Color.White;
-            this.scaleLabel1.Location = new System.Drawing.Point(0, 0);
-            this.scaleLabel1.Margin = new System.Windows.Forms.Padding(0);
-            this.scaleLabel1.Name = "scaleLabel1";
-            this.scaleLabel1.Size = new System.Drawing.Size(172, 95);
-            this.scaleLabel1.TabIndex = 5;
-            this.scaleLabel1.Text = "iCAPS";
-            this.scaleLabel1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // scaleLabel2
-            // 
-            this.scaleLabel2.AutoSize = true;
-            this.scaleLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleLabel2.Factor = 0.14F;
-            this.scaleLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.3F);
-            this.scaleLabel2.ForeColor = System.Drawing.Color.White;
-            this.scaleLabel2.Location = new System.Drawing.Point(175, 0);
-            this.scaleLabel2.Name = "scaleLabel2";
-            this.scaleLabel2.Size = new System.Drawing.Size(88, 95);
-            this.scaleLabel2.TabIndex = 6;
-            this.scaleLabel2.Text = "V2.0.1";
-            this.scaleLabel2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // scaleLabel3
-            // 
-            this.scaleLabel3.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.scaleLabel3, 2);
-            this.scaleLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleLabel3.Factor = 0.32F;
-            this.scaleLabel3.Font = new System.Drawing.Font("微軟正黑體", 13.12F, System.Drawing.FontStyle.Bold);
-            this.scaleLabel3.ForeColor = System.Drawing.Color.White;
-            this.scaleLabel3.Location = new System.Drawing.Point(3, 95);
-            this.scaleLabel3.Name = "scaleLabel3";
-            this.scaleLabel3.Size = new System.Drawing.Size(260, 41);
-            this.scaleLabel3.TabIndex = 7;
-            this.scaleLabel3.Text = "  智慧電腦輔助生產系統";
             // 
             // Form1
             // 
@@ -405,8 +406,8 @@ namespace iCAPS
             this.tableLayoutPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btFold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btFold)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,7 +436,7 @@ namespace iCAPS
         private System.Windows.Forms.Button btnMini;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private ScaleLabel scaleLabel1;
-        private ScaleLabel scaleLabel2;
+        private ScaleLabel version_no;
         private ScaleLabel scaleLabel3;
     }
 }
