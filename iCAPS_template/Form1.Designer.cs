@@ -49,9 +49,11 @@ namespace iCAPS
             this.btFold = new System.Windows.Forms.PictureBox();
             this.btPower = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.enable_side = new System.Windows.Forms.CheckBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.connStatusLabel = new System.Windows.Forms.Label();
             this.moduleTitle = new System.Windows.Forms.Label();
+            this.side_trick = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
@@ -60,6 +62,7 @@ namespace iCAPS
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btFold)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidePanel
@@ -311,7 +314,7 @@ namespace iCAPS
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(43, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 34);
+            this.label1.Size = new System.Drawing.Size(195, 27);
             this.label1.TabIndex = 3;
             this.label1.Text = "State Monitor App";
             // 
@@ -341,17 +344,31 @@ namespace iCAPS
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.enable_side);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(266, 141);
+            this.panel1.Location = new System.Drawing.Point(266, 131);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(965, 579);
+            this.panel1.Size = new System.Drawing.Size(965, 589);
             this.panel1.TabIndex = 5;
+            // 
+            // enable_side
+            // 
+            this.enable_side.AutoSize = true;
+            this.enable_side.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.enable_side.Location = new System.Drawing.Point(86, 82);
+            this.enable_side.Name = "enable_side";
+            this.enable_side.Size = new System.Drawing.Size(124, 28);
+            this.enable_side.TabIndex = 0;
+            this.enable_side.Text = "啟用側邊攔";
+            this.enable_side.UseVisualStyleBackColor = true;
+            this.enable_side.Visible = false;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(266, 140);
+            this.panel5.Location = new System.Drawing.Point(266, 130);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(965, 1);
             this.panel5.TabIndex = 44;
@@ -363,7 +380,7 @@ namespace iCAPS
             this.connStatusLabel.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.connStatusLabel.Location = new System.Drawing.Point(988, 82);
             this.connStatusLabel.Name = "connStatusLabel";
-            this.connStatusLabel.Size = new System.Drawing.Size(231, 34);
+            this.connStatusLabel.Size = new System.Drawing.Size(180, 27);
             this.connStatusLabel.TabIndex = 43;
             this.connStatusLabel.Text = "連線狀態：未連接";
             this.connStatusLabel.Visible = false;
@@ -378,15 +395,28 @@ namespace iCAPS
             this.moduleTitle.Location = new System.Drawing.Point(266, 46);
             this.moduleTitle.Name = "moduleTitle";
             this.moduleTitle.Padding = new System.Windows.Forms.Padding(20, 22, 20, 22);
-            this.moduleTitle.Size = new System.Drawing.Size(383, 94);
+            this.moduleTitle.Size = new System.Drawing.Size(314, 84);
             this.moduleTitle.TabIndex = 42;
             this.moduleTitle.Text = "設備狀態監控App";
             this.moduleTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // side_trick
+            // 
+            this.side_trick.BackColor = System.Drawing.SystemColors.Control;
+            this.side_trick.Dock = System.Windows.Forms.DockStyle.Right;
+            this.side_trick.Location = new System.Drawing.Point(1225, 131);
+            this.side_trick.Margin = new System.Windows.Forms.Padding(0);
+            this.side_trick.Name = "side_trick";
+            this.side_trick.Size = new System.Drawing.Size(6, 589);
+            this.side_trick.TabIndex = 45;
+            this.side_trick.Visible = false;
+            this.side_trick.MouseEnter += new System.EventHandler(this.panel6_MouseEnter);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1231, 720);
+            this.Controls.Add(this.side_trick);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.connStatusLabel);
@@ -408,6 +438,8 @@ namespace iCAPS
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btFold)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,6 +470,8 @@ namespace iCAPS
         private ScaleLabel scaleLabel1;
         private ScaleLabel version_no;
         private ScaleLabel scaleLabel3;
+        private System.Windows.Forms.Panel side_trick;
+        public System.Windows.Forms.CheckBox enable_side;
     }
 }
 

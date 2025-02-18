@@ -27,6 +27,7 @@ namespace iCAPS
             if (ctrl != null)
             {
                 ctrl.Controls.Add(browser); 
+                browser.Dock = DockStyle.Fill;
             }
             else
             {

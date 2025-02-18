@@ -14,3 +14,5 @@
 - 修改 HttpRequest 套件(無法向下兼容)
 	- 返回資料從 string 更改為 int
 	- 新增 ResponseMessage 作為回應字串來源
+### V2.1.0
+- 新增彈出式右側框設計

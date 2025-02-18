@@ -21,6 +21,7 @@ namespace iCAPS
         }
 
         List<Button> menu_button_list = new List<Button>();
+        SidePanel right_side_panel;
 
         public Form1()
         {
@@ -28,9 +29,8 @@ namespace iCAPS
 
             string[] Version_parts = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.');
             string icaps_version = string.Join(".", Version_parts.Take(3));
-
             version_no.Text = $"V{icaps_version}";
-            
+
             SizeChanged += Form1_SizeChanged;
             Load += Form1_Load;
         }
@@ -38,11 +38,29 @@ namespace iCAPS
         private void Form1_Load(object sender, EventArgs e)
         {
             if (this.Site?.DesignMode ?? false) return;
-            
-            WindowState = FormWindowState.Maximized;    // 全螢幕
+
+            // 判定是否啟用右側欄
+            if (enable_side.Checked)
+            {
+                side_trick.Visible = true;
+
+                // 嘗試在目前專案中找到 SidePanel
+                Type side_panel = Assembly.GetEntryAssembly().GetTypes()
+                    .FirstOrDefault(t => t.Name.Equals("SidePanel", StringComparison.OrdinalIgnoreCase));
+
+                if (side_panel == null)
+                {
+                    MessageBox.Show("請確定在專案中已建立 SidePanel.cs。", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
+
+                right_side_panel = Activator.CreateInstance(side_panel) as SidePanel;
+                right_side_panel.Parent = panel1;
+            }
 
             menu_add_setting();     // 加入 menu 的 setting 設定
             LoadFormsFromFolder();  // 讀取資料夾建立 menu
+            WindowState = FormWindowState.Maximized;    // 全螢幕
         }
 
         private void menu_add_setting()
@@ -307,6 +325,11 @@ namespace iCAPS
 
                 return bitmap;
             }
+        }
+
+        private void panel6_MouseEnter(object sender, EventArgs e)
+        {
+            right_side_panel.Start = true;
         }
     }
 
