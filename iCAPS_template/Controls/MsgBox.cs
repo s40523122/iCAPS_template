@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace iCAPS
@@ -42,12 +43,32 @@ namespace iCAPS
             thisform.label1.Text = title;
             thisform.richTextBox1.Text = msg;
             thisform.ShowDialog();
-            thisform.backForm.Close();
+        }
+        public static void ShowFlash(string msg, string title = "Message", int show_millisecond = 3000)
+        {
+            MsgBox thisform = new MsgBox();
+            thisform.label1.Text = title;
+            thisform.richTextBox1.Text = msg;
+            thisform.Show();
+            System.Timers.Timer _timer = new System.Timers.Timer(show_millisecond); // 設定 3 秒後觸發
+            _timer.Elapsed += (sender, e) =>
+            {
+                if (thisform.IsDisposed) return;
+                thisform.Invoke(new Action(() => 
+                { 
+                    thisform.backForm?.Close(); 
+                    thisform?.Close(); 
+                }));
+            };
+            _timer.AutoReset = false; // 只執行一次
+            _timer.Start();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.backForm.Close();
         }
     }
 }
