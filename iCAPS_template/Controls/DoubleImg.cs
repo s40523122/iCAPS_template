@@ -22,6 +22,7 @@ namespace iCAPS
             get { return change; }
             set
             {
+                if (value == change) return;
                 change = value;
                 Tag = Image;
                 Image = SubImg;
