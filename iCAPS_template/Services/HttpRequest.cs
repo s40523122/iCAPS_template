@@ -19,9 +19,12 @@ namespace iCAPS
         
         private string _base_url = "";
 
-        public HttpRequest(string Url) 
+        private TimeSpan _timeout;
+
+        public HttpRequest(string Url, double timeout_second=3) 
         {
             _base_url = Url;
+            _timeout = TimeSpan.FromSeconds(timeout_second);
         }
 
         /// <summary>
@@ -51,7 +54,7 @@ namespace iCAPS
             {
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.Timeout = TimeSpan.FromSeconds(10);          // 10秒超時
+                httpClient.Timeout = _timeout;          // 設定超時
 
                 try
                 {
@@ -99,7 +102,7 @@ namespace iCAPS
             {
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.Timeout = TimeSpan.FromSeconds(10);          // 10秒超時
+                httpClient.Timeout = _timeout;          // 設定超時
 
                 try
                 {
