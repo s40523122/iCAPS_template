@@ -16,3 +16,8 @@
 	- 新增 ResponseMessage 作為回應字串來源
 ### V2.1.0
 - 新增彈出式右側框設計
+
+### V2.1.1
+- 修改 DoubleImg 切換不正確問題
+- MsgBox 增加非同步自動關閉的 ShowFlash 功能
+- HttpRequest 增加自訂 Timeout 秒數機制
