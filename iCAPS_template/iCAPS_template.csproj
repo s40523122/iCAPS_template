@@ -171,6 +171,7 @@
     <Compile Include="Controls\MsgBox.designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\SocketManager.cs" />
     <Compile Include="Services\WebView.cs" />
     <Compile Include="Temp\datePicker.cs">
       <SubType>Form</SubType>
