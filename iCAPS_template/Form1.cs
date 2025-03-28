@@ -284,9 +284,10 @@ namespace iCAPS
                 FlatStyle = FlatStyle.Flat;
                 FlatAppearance.BorderSize = 0;
 
-                AutoSize = true;
+                AutoSize = false;
                 Padding = new Padding(20, 0, 0, 0);
-                Dock = DockStyle.Fill;
+                Dock = DockStyle.Top;
+                Height = 80;
 
                 Image input_img = icon_black_to_white(formType.Icon.ToBitmap());
                 // 創建一個新的 Bitmap，並使用 Graphics 類別進行縮放

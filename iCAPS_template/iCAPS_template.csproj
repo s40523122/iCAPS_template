@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Services\SocketManager.cs" />
     <Compile Include="Services\WebView.cs" />
+    <Compile Include="Services\WebSocketManager.cs" />
     <Compile Include="Temp\datePicker.cs">
       <SubType>Form</SubType>
     </Compile>
