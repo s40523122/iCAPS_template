@@ -11,6 +11,14 @@ namespace iCAPS
 { 
     public partial class Form1 : Form
     {
+        //private string _form_path = "";
+
+        public string FormsPath 
+        {
+            get => INiReader.ReadINIFile(Env.ini_path, "System", "FormsPath"); 
+            set => INiReader.WriteINIFile(Env.ini_path, "System", "FormsPath", value);
+        }
+
         /// <summary>
         /// 連線狀態文字
         /// </summary>
@@ -91,22 +99,51 @@ namespace iCAPS
 
         private void LoadFormsFromFolder()
         {
-            // string base_directory = AppDomain.CurrentDomain.BaseDirectory;   // 取得目前執行檔所在的目錄
-            string base_directory = Environment.CurrentDirectory;   // 取得目前執行檔所在的目錄
+            string[] csFiles;
 
-            string root_path = Directory.GetParent(base_directory)?.Parent?.FullName;  // 回到專案根目錄 (向上一層)
-            string forms_path = Path.Combine(root_path, "Forms");
-
-            // 確保資料夾存在
-            if (!Directory.Exists(forms_path))
+            if (Debugger.IsAttached)
             {
-                MessageBox.Show($"路徑 {forms_path} 不存在");
-                return;
+                // string root_path = Directory.GetParent(base_directory)?.Parent?.FullName;  // 回到專案根目錄 (向上一層)
+                if (FormsPath == "")
+                {
+                    using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+                    {
+                        folderDialog.Description = "請選擇 Forms 所在資料夾";
+                        folderDialog.ShowNewFolderButton = true;
+
+                        if (folderDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string selectedPath = folderDialog.SelectedPath;
+                            FormsPath = selectedPath;
+                            Console.WriteLine("你選擇的資料夾路徑是：" + selectedPath);
+                        }
+                        else
+                        {
+                            Console.WriteLine("使用者取消選擇");
+                        }
+                    }
+                }
+                // string forms_path = Path.Combine(FormsPath, "Forms");
+
+                // 確保資料夾存在
+                if (!Directory.Exists(FormsPath))
+                {
+                    MessageBox.Show($"路徑 {FormsPath} 不存在");
+                    return;
+                }
+
+                // 讀取資料夾內的 .cs 檔案
+                csFiles = Directory.GetFiles(FormsPath, "*.cs");
+                
+            }
+            else
+            {
+                string forms_string = INiReader.ReadINIFile(Env.ini_path, "System", "Forms");
+                csFiles = forms_string.Split(';');
             }
             
-            // 讀取資料夾內的 .cs 檔案
-            string[] csFiles = Directory.GetFiles(forms_path, "*.cs");
 
+            List<string> form_cs = new List<string>();
             foreach (string csFile in csFiles)
             {
                 string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(csFile);
@@ -120,6 +157,8 @@ namespace iCAPS
 
                 if (formType != null)
                 {
+                    form_cs.Add(fileNameWithoutExtension);
+
                     Form form = Activator.CreateInstance(formType) as Form;
 
                     // 創建按鈕
@@ -135,6 +174,11 @@ namespace iCAPS
                 {
                     Console.WriteLine($"找不到類型：{fileNameWithoutExtension}");
                 }
+            }
+            if (Debugger.IsAttached)
+            {
+                string result = string.Join(";", form_cs);
+                INiReader.WriteINIFile(Env.ini_path, "System", "Forms", result);
             }
         }
 
