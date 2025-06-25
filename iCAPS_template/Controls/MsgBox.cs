@@ -24,7 +24,7 @@ namespace iCAPS
                 Size = Env.FormSize,
                 TopMost = true,
                 Location = Env.FormLocation,
-                ShowInTaskbar = false,
+                ShowInTaskbar = false
             };
             //if (!System.Diagnostics.Debugger.IsAttached) backForm.Show();
             backForm.Show();
@@ -90,8 +90,10 @@ namespace iCAPS
         private void MsgBox_Close()
         {
             cts.Cancel(); // 取消 Delay
+            this.backForm.Hide();
+            this.backForm = null;
+            
             this.Close();
-            this.backForm.Close();
         }
     }
 }
