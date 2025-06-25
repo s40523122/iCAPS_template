@@ -90,8 +90,8 @@ namespace iCAPS
         private void MsgBox_Close()
         {
             cts.Cancel(); // 取消 Delay
-            this.backForm.Hide();
-            this.backForm = null;
+            this.backForm?.Hide();
+            //this.backForm = null;
             
             this.Close();
         }
