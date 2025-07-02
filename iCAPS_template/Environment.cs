@@ -19,5 +19,15 @@ namespace iCAPS
 
         public static Size FormSize { get; set; }
         public static Point FormLocation { get; set; }
+
+        /// <summary>
+        /// 允許當視窗最小化時，以泡泡形式置頂於螢幕排列
+        /// </summary>
+        public static bool EnableBubble { get; set; } = false;
+
+        /// <summary>
+        /// 當前視窗狀態是否為泡泡形式
+        /// </summary>
+        public static bool IsBubble {  get; set; } = false;
     }
 }

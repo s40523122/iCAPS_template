@@ -6,12 +6,14 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Chump_kuka.Controls;
 
 namespace iCAPS
 { 
     public partial class Form1 : Form
     {
         //private string _form_path = "";
+        private SubBubble _sub_bubble;      // 泡泡視窗，當 Env.EnableBubble = true 時，視窗最小化會以泡泡置頂出現
 
         public string FormsPath 
         {
@@ -46,6 +48,12 @@ namespace iCAPS
         private void Form1_Load(object sender, EventArgs e)
         {
             if (this.Site?.DesignMode ?? false) return;
+
+            // 若設定允許開啟泡泡視窗，建立泡泡視窗實例
+            if (Env.EnableBubble)
+            {
+                _sub_bubble = new SubBubble(this);
+            }
 
             // 判定是否啟用右側欄
             if (enable_side.Checked)
@@ -208,7 +216,15 @@ namespace iCAPS
         /// <param name="e"></param>
         private void btnMini_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            if (Env.EnableBubble)
+            {
+                _sub_bubble.Show();
+                this.Hide();
+            }
+            else
+            {
+                WindowState = FormWindowState.Minimized;
+            }
         }
 
         /// <summary>
