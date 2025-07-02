@@ -1,4 +1,4 @@
-﻿namespace Chump_kuka.Controls
+﻿namespace iCAPS
 {
     partial class SubBubble
     {

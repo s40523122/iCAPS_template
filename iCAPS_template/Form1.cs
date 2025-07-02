@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Chump_kuka.Controls;
 
 namespace iCAPS
 { 
@@ -218,6 +217,7 @@ namespace iCAPS
         {
             if (Env.EnableBubble)
             {
+                Env.IsBubble = true;
                 _sub_bubble.Show();
                 this.Hide();
             }
