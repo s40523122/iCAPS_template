@@ -158,7 +158,7 @@ namespace iCAPS
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.btnHome, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnSetting, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnSetting, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 459);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -202,7 +202,7 @@ namespace iCAPS
             this.btnSetting.ForeColor = System.Drawing.Color.White;
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(3, 3);
+            this.btnSetting.Location = new System.Drawing.Point(3, 90);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSetting.Size = new System.Drawing.Size(260, 81);

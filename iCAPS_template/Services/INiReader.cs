@@ -33,6 +33,13 @@ namespace iCAPS
         {
             try
             {
+                // 判斷資料夾是否存在
+                string directory = Path.GetDirectoryName(path);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);       // 若不存在，自動建立
+                }
+
                 // 寫入INI檔案
                 WritePrivateProfileString(section, key, value, path);
                 return true;
