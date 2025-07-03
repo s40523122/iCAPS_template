@@ -61,6 +61,7 @@ namespace iCAPS
         /// <param name="path">INI 檔案地址</param>
         /// <param name="section">資料所在之節</param>
         /// <param name="key">資料參數名稱</param>
+        /// <param name="bufferSize">緩衝區大小</param>
         /// <returns>(string) 讀取之資料內容</returns>
         /// <remarks>
         /// 若欲使用工作位置資料夾路徑，可使用下列程式碼
@@ -68,9 +69,8 @@ namespace iCAPS
         /// string DataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config/temp.ini");
         /// </code>
         /// </remarks>
-        public static string ReadINIFile(string path, string section, string key)
+        public static string ReadINIFile(string path, string section, string key, int bufferSize = 255)
         {
-            const int bufferSize = 255; // 緩衝區大小
             StringBuilder buffer = new StringBuilder(bufferSize);
 
             GetPrivateProfileString(section, key, "", buffer, bufferSize, path);
