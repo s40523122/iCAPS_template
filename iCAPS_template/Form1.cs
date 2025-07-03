@@ -392,6 +392,11 @@ namespace iCAPS
         {
             right_side_panel.Start = true;
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timeLabel.Text = $"當前時間:\n{DateTime.Now.ToString(@"MM/dd HH:mm:ss")}";
+        }
     }
 
 }

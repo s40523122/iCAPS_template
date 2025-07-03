@@ -28,6 +28,7 @@ namespace iCAPS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.sidePanel = new System.Windows.Forms.Panel();
             this.slidePanel = new System.Windows.Forms.Panel();
@@ -35,15 +36,11 @@ namespace iCAPS
             this.info = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.scaleLabel1 = new iCAPS.ScaleLabel();
-            this.version_no = new iCAPS.ScaleLabel();
-            this.scaleLabel3 = new iCAPS.ScaleLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnSetting = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnMini = new System.Windows.Forms.Button();
-            this.btnFormControl = new iCAPS.DoubleImg();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btFold = new System.Windows.Forms.PictureBox();
@@ -54,15 +51,23 @@ namespace iCAPS
             this.connStatusLabel = new System.Windows.Forms.Label();
             this.moduleTitle = new System.Windows.Forms.Label();
             this.side_trick = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.time_timer = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new iCAPS.ScaleLabel();
+            this.btnFormControl = new iCAPS.DoubleImg();
+            this.scaleLabel1 = new iCAPS.ScaleLabel();
+            this.version_no = new iCAPS.ScaleLabel();
+            this.scaleLabel3 = new iCAPS.ScaleLabel();
             this.sidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btFold)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel
@@ -147,58 +152,13 @@ namespace iCAPS
             this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 136);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
-            // scaleLabel1
-            // 
-            this.scaleLabel1.AutoSize = true;
-            this.scaleLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.scaleLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleLabel1.Factor = 0.31F;
-            this.scaleLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.scaleLabel1.Font = new System.Drawing.Font("微軟正黑體", 29.45F, System.Drawing.FontStyle.Bold);
-            this.scaleLabel1.ForeColor = System.Drawing.Color.White;
-            this.scaleLabel1.Location = new System.Drawing.Point(0, 0);
-            this.scaleLabel1.Margin = new System.Windows.Forms.Padding(0);
-            this.scaleLabel1.Name = "scaleLabel1";
-            this.scaleLabel1.Size = new System.Drawing.Size(172, 95);
-            this.scaleLabel1.TabIndex = 5;
-            this.scaleLabel1.Text = "iCAPS";
-            this.scaleLabel1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // version_no
-            // 
-            this.version_no.AutoSize = true;
-            this.version_no.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.version_no.Factor = 0.14F;
-            this.version_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.3F);
-            this.version_no.ForeColor = System.Drawing.Color.White;
-            this.version_no.Location = new System.Drawing.Point(175, 0);
-            this.version_no.Name = "version_no";
-            this.version_no.Size = new System.Drawing.Size(88, 95);
-            this.version_no.TabIndex = 6;
-            this.version_no.Text = "V0.0.0";
-            this.version_no.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // scaleLabel3
-            // 
-            this.scaleLabel3.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.scaleLabel3, 2);
-            this.scaleLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scaleLabel3.Factor = 0.32F;
-            this.scaleLabel3.Font = new System.Drawing.Font("微軟正黑體", 13.12F, System.Drawing.FontStyle.Bold);
-            this.scaleLabel3.ForeColor = System.Drawing.Color.White;
-            this.scaleLabel3.Location = new System.Drawing.Point(3, 95);
-            this.scaleLabel3.Name = "scaleLabel3";
-            this.scaleLabel3.Size = new System.Drawing.Size(260, 41);
-            this.scaleLabel3.TabIndex = 7;
-            this.scaleLabel3.Text = "  智慧電腦輔助生產系統";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.btnHome, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnSetting, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnSetting, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 459);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -242,7 +202,7 @@ namespace iCAPS
             this.btnSetting.ForeColor = System.Drawing.Color.White;
             this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(3, 90);
+            this.btnSetting.Location = new System.Drawing.Point(3, 3);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSetting.Size = new System.Drawing.Size(260, 81);
@@ -281,24 +241,6 @@ namespace iCAPS
             this.btnMini.TabIndex = 7;
             this.btnMini.UseVisualStyleBackColor = true;
             this.btnMini.Click += new System.EventHandler(this.btnMini_Click);
-            // 
-            // btnFormControl
-            // 
-            this.btnFormControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFormControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFormControl.Change = false;
-            this.btnFormControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFormControl.EnableCilck = true;
-            this.btnFormControl.Image = ((System.Drawing.Image)(resources.GetObject("btnFormControl.Image")));
-            this.btnFormControl.Location = new System.Drawing.Point(886, 10);
-            this.btnFormControl.Name = "btnFormControl";
-            this.btnFormControl.SetSquare = true;
-            this.btnFormControl.Size = new System.Drawing.Size(27, 27);
-            this.btnFormControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnFormControl.SubImg = ((System.Drawing.Image)(resources.GetObject("btnFormControl.SubImg")));
-            this.btnFormControl.TabIndex = 5;
-            this.btnFormControl.TabStop = false;
-            this.btnFormControl.Click += new System.EventHandler(this.BtnFormControl_Click);
             // 
             // panel3
             // 
@@ -348,10 +290,10 @@ namespace iCAPS
             // 
             this.panel1.Controls.Add(this.enable_side);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(266, 131);
+            this.panel1.Location = new System.Drawing.Point(266, 46);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(965, 589);
+            this.panel1.Size = new System.Drawing.Size(965, 674);
             this.panel1.TabIndex = 5;
             // 
             // enable_side
@@ -372,7 +314,7 @@ namespace iCAPS
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(266, 130);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(965, 1);
+            this.panel5.Size = new System.Drawing.Size(959, 1);
             this.panel5.TabIndex = 44;
             // 
             // connStatusLabel
@@ -380,7 +322,7 @@ namespace iCAPS
             this.connStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.connStatusLabel.AutoSize = true;
             this.connStatusLabel.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.connStatusLabel.Location = new System.Drawing.Point(988, 82);
+            this.connStatusLabel.Location = new System.Drawing.Point(763, 33);
             this.connStatusLabel.Name = "connStatusLabel";
             this.connStatusLabel.Size = new System.Drawing.Size(180, 27);
             this.connStatusLabel.TabIndex = 43;
@@ -391,10 +333,10 @@ namespace iCAPS
             // 
             this.moduleTitle.AutoSize = true;
             this.moduleTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.moduleTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.moduleTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.moduleTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moduleTitle.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.moduleTitle.Location = new System.Drawing.Point(266, 46);
+            this.moduleTitle.Location = new System.Drawing.Point(0, 0);
             this.moduleTitle.Name = "moduleTitle";
             this.moduleTitle.Padding = new System.Windows.Forms.Padding(20, 22, 20, 22);
             this.moduleTitle.Size = new System.Drawing.Size(314, 84);
@@ -406,23 +348,117 @@ namespace iCAPS
             // 
             this.side_trick.BackColor = System.Drawing.SystemColors.Control;
             this.side_trick.Dock = System.Windows.Forms.DockStyle.Right;
-            this.side_trick.Location = new System.Drawing.Point(1225, 131);
+            this.side_trick.Location = new System.Drawing.Point(1225, 46);
             this.side_trick.Margin = new System.Windows.Forms.Padding(0);
             this.side_trick.Name = "side_trick";
-            this.side_trick.Size = new System.Drawing.Size(6, 589);
+            this.side_trick.Size = new System.Drawing.Size(6, 674);
             this.side_trick.TabIndex = 45;
             this.side_trick.Visible = false;
             this.side_trick.MouseEnter += new System.EventHandler(this.panel6_MouseEnter);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.connStatusLabel);
+            this.panel6.Controls.Add(this.moduleTitle);
+            this.panel6.Controls.Add(this.timeLabel);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(266, 46);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(959, 84);
+            this.panel6.TabIndex = 46;
+            // 
+            // time_timer
+            // 
+            this.time_timer.Enabled = true;
+            this.time_timer.Interval = 500;
+            this.time_timer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.timeLabel.Factor = 0.27F;
+            this.timeLabel.Font = new System.Drawing.Font("微軟正黑體", 16.74F, System.Drawing.FontStyle.Bold);
+            this.timeLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.timeLabel.Location = new System.Drawing.Point(570, 12);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(10);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(216, 62);
+            this.timeLabel.TabIndex = 5;
+            this.timeLabel.Text = "當前時間:\r\n01/01 12:00:00";
+            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnFormControl
+            // 
+            this.btnFormControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFormControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFormControl.Change = false;
+            this.btnFormControl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFormControl.EnableCilck = true;
+            this.btnFormControl.Image = ((System.Drawing.Image)(resources.GetObject("btnFormControl.Image")));
+            this.btnFormControl.Location = new System.Drawing.Point(886, 10);
+            this.btnFormControl.Name = "btnFormControl";
+            this.btnFormControl.SetSquare = true;
+            this.btnFormControl.Size = new System.Drawing.Size(27, 27);
+            this.btnFormControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFormControl.SubImg = ((System.Drawing.Image)(resources.GetObject("btnFormControl.SubImg")));
+            this.btnFormControl.TabIndex = 5;
+            this.btnFormControl.TabStop = false;
+            this.btnFormControl.Click += new System.EventHandler(this.BtnFormControl_Click);
+            // 
+            // scaleLabel1
+            // 
+            this.scaleLabel1.AutoSize = true;
+            this.scaleLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.scaleLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleLabel1.Factor = 0.31F;
+            this.scaleLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.scaleLabel1.Font = new System.Drawing.Font("微軟正黑體", 29.45F, System.Drawing.FontStyle.Bold);
+            this.scaleLabel1.ForeColor = System.Drawing.Color.White;
+            this.scaleLabel1.Location = new System.Drawing.Point(0, 0);
+            this.scaleLabel1.Margin = new System.Windows.Forms.Padding(0);
+            this.scaleLabel1.Name = "scaleLabel1";
+            this.scaleLabel1.Size = new System.Drawing.Size(172, 95);
+            this.scaleLabel1.TabIndex = 5;
+            this.scaleLabel1.Text = "iCAPS";
+            this.scaleLabel1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // version_no
+            // 
+            this.version_no.AutoSize = true;
+            this.version_no.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.version_no.Factor = 0.14F;
+            this.version_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.3F);
+            this.version_no.ForeColor = System.Drawing.Color.White;
+            this.version_no.Location = new System.Drawing.Point(175, 0);
+            this.version_no.Name = "version_no";
+            this.version_no.Size = new System.Drawing.Size(88, 95);
+            this.version_no.TabIndex = 6;
+            this.version_no.Text = "V0.0.0";
+            this.version_no.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // scaleLabel3
+            // 
+            this.scaleLabel3.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.scaleLabel3, 2);
+            this.scaleLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scaleLabel3.Factor = 0.32F;
+            this.scaleLabel3.Font = new System.Drawing.Font("微軟正黑體", 13.12F, System.Drawing.FontStyle.Bold);
+            this.scaleLabel3.ForeColor = System.Drawing.Color.White;
+            this.scaleLabel3.Location = new System.Drawing.Point(3, 95);
+            this.scaleLabel3.Name = "scaleLabel3";
+            this.scaleLabel3.Size = new System.Drawing.Size(260, 41);
+            this.scaleLabel3.TabIndex = 7;
+            this.scaleLabel3.Text = "  智慧電腦輔助生產系統";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1231, 720);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.side_trick);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.connStatusLabel);
-            this.Controls.Add(this.moduleTitle);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -438,12 +474,13 @@ namespace iCAPS
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btFold)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFormControl)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -474,6 +511,9 @@ namespace iCAPS
         private ScaleLabel scaleLabel3;
         private System.Windows.Forms.Panel side_trick;
         public System.Windows.Forms.CheckBox enable_side;
+        private ScaleLabel timeLabel;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Timer time_timer;
     }
 }
 
