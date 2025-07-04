@@ -48,6 +48,8 @@ namespace iCAPS
         {
             if (this.Site?.DesignMode ?? false) return;
 
+            time_timer.Start();
+
             // 若設定允許開啟泡泡視窗，建立泡泡視窗實例
             if (Env.EnableBubble)
             {
