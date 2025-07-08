@@ -29,19 +29,25 @@ namespace iCAPS
         /// string DataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config/temp.ini");
         /// </code>
         /// </remarks>
-        public static bool WriteINIFile(string path, string section, string key, string value)
+        public static bool WriteINIFile(string filePath, string section, string key, string value)
         {
             try
             {
                 // 判斷資料夾是否存在
-                string directory = Path.GetDirectoryName(path);
+                string directory = Path.GetDirectoryName(filePath);
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);       // 若不存在，自動建立
                 }
 
-                // 寫入INI檔案
-                WritePrivateProfileString(section, key, value, path);
+                // 檢查檔案是否存在
+                if (!File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath, "", Encoding.Unicode);
+                }
+
+                    // 寫入INI檔案
+                WritePrivateProfileString(section, key, value, filePath);
                 return true;
             }
             catch
